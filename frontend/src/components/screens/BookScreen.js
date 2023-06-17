@@ -1,42 +1,37 @@
-import React from "react";
+import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-import { Row, Col, Image, ListGroup } from "react-bootstrap";
-import books from "../../books";
+import axios from "axios";
+import Book from "../Book";
+
+
+
 
 function BookScreen() {
+  const [book, setBook] = useState(null);
   const { id } = useParams();
-  const book = books.find((p) => p._id === id);
+
+  useEffect(() => {
+    async function fetchBook() {
+      try {
+        const { data } = await axios.get(
+          `http://127.0.0.1:8000/api/v1/books/${id}`
+        );
+        setBook(data);
+      } catch (error) {
+        console.error(error);
+      }
+    }
+
+    fetchBook();
+  }, [id]);
 
   if (!book) {
-    return <div>Book not found</div>;
+    return <div>Loading...</div>;
   }
 
   return (
     <div>
-      <Row className="my-4">
-        <Col md={3}>
-          <Image src={book.cover} alt={book.title} />
-        </Col>
-        <Col md={3}>
-          <ListGroup variant="flush">
-            <ListGroup.Item>
-              <h3>{book.title}</h3>
-            </ListGroup.Item>
-            <ListGroup.Item>
-              <p>Author: {book.author}</p>
-            </ListGroup.Item>
-            <ListGroup.Item>
-              <p>Price: {book.price}</p>
-            </ListGroup.Item>
-            <ListGroup.Item>
-              <p>Year published: {book.year_published}</p>
-            </ListGroup.Item>
-            <ListGroup.Item>
-              <p>{book.annotation}</p>
-            </ListGroup.Item>
-          </ListGroup>
-        </Col>
-      </Row>
+      <Book book={book} />
     </div>
   );
 }

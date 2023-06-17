@@ -11,12 +11,13 @@ import BookScreen from "./components/screens/BookScreen";
 function App() {
   return (
     <Router>
+
       <Header />
       <main className="py-3">
         <Container>
           <Routes>
             <Route path="/" element={<Homescreen />} />
-            <Route path="/book/:id" element={<BookScreen />} />
+            <Route path="/books/:id" element={<BookScreen />} />
           </Routes>
         </Container>
       </main>

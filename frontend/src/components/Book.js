@@ -2,15 +2,16 @@ import React from "react";
 import { Card } from "react-bootstrap";
 import { Link } from 'react-router-dom'
 
+
 function Book({ book }) {
   return (
     <Card className="my-3 p-3 rounded">
-      <Link to={`/book/${book._id}`}>
+      <Link to={`/books/${book.id}`}>
         <Card.Img src={book.cover} />
       </Link>
 
       <Card.Body>
-        <Link to={`/book/${book._id}`}>
+        <Link to={`/books/${book.id}`}>
           <Card.Title as="div">
             <strong>{book.title}</strong>
           </Card.Title>
