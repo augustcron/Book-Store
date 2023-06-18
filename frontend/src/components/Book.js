@@ -16,9 +16,11 @@ function Book({ book }) {
             <strong>{book.title}</strong>
           </Card.Title>
         </Link>
-        <Card.Text as="div">
-          <div className="my-3">{book.author}</div>
-        </Card.Text>
+        <Link to={`/authors/${book.author[0].id}`}>
+              <Card.Title as="div">
+                <strong>{book.author[0].name}</strong>
+              </Card.Title>
+            </Link>
         <Card.Text as="h3">{book.price}₽</Card.Text>
       </Card.Body>
     </Card>

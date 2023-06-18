@@ -6,6 +6,7 @@ import Footer from "./components/Footer";
 import Header from "./components/Header";
 import Homescreen from "./components/screens/HomeScreen";
 import BookScreen from "./components/screens/BookScreen";
+import AuthorScreen from "./components/screens/AuthorScreen";
 
 
 function App() {
@@ -18,6 +19,7 @@ function App() {
           <Routes>
             <Route path="/" element={<Homescreen />} />
             <Route path="/books/:id" element={<BookScreen />} />
+            <Route path="/authors/:id" element={<AuthorScreen />} />
           </Routes>
         </Container>
       </main>

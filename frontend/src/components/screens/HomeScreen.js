@@ -13,13 +13,13 @@ function Homescreen() {
     }
 	fetchBooks()
   },[])
-
+  
   return (
     <div>
       <h1 className="text-center">Новинки</h1>
       <Row>
-        {books.map((book) => (
-          <Col key={book.id} sm={12} md={6} lg={4} xl={3}>
+        {books.slice(0, 5).map((book) => (
+          <Col key={book.id}>
             <Link to={`/books/${book.id}`}></Link>
             <Book book={book} />
           </Col>
