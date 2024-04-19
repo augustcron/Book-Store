@@ -22,4 +22,3 @@ for url in urls:
 
 	data.append([name, author, description])
 
-print(data)
